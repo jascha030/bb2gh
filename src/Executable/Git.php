@@ -2,14 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Jascha030\Bitbucket2Github\Git;
+namespace Jascha030\Bitbucket2Github\Executable;
 
-use Jascha030\Bitbucket2Github\Executable\Executable;
-
-class Git extends Executable
+final class Git extends Executable
 {
-    public function getBasename(): string
+    public function __construct(string $executable = 'git')
     {
-        return 'git';
+        parent::__construct($executable);
     }
 }
