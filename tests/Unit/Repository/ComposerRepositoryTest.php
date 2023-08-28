@@ -16,7 +16,7 @@ use Seld\JsonLint\ParsingException;
  *
  * @covers \Jascha030\Bitbucket2Github\Repository\ComposerRepository
  */
-final class RepositoryTest extends TestCase
+final class ComposerRepositoryTest extends TestCase
 {
     /**
      * @depends testConstruct
