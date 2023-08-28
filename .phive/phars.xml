@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phive xmlns="https://phar.io/phive">
+  <phar name="phpunit" version="^9.6.11" installed="9.6.11" location="./tools/phpunit.phar" copy="false"/>
+  <phar name="php-cs-fixer" version="^3.23.0" installed="3.23.0" location="./tools/php-cs-fixer.phar" copy="false"/>
+  <phar name="humbug/box" version="^4.3.8" installed="4.3.8" location="./tools/box.phar" copy="false"/>
+  <phar name="php-scoper" version="^0.18.3" installed="0.18.3" location="./tools/php-scoper.phar" copy="false"/>
+</phive>
