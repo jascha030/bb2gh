@@ -1,0 +1,64 @@
+{
+    "name": "jascha030/bb2gh",
+    "description": "CLI tool to help me quickly migrate a project from bitbucket to github.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jascha030",
+            "email": "contact@jaschavanaalst.nl"
+        }
+    ],
+    "keywords": [],
+    "homepage": "https://github.com/jascha030",
+    "autoload": {
+        "psr-4": {
+            "Jascha030\\Bitbucket2Github\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jascha030\\Bitbucket2Github\\": "tests/Unit/"
+        }
+    },
+    "bin": [
+        "bb2gh"
+    ],
+    "config": {
+        "platform": {
+            "php": "8.1"
+        },
+        "platform-check": false,
+        "sort-packages": true,
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        }
+    },
+    "extra": {
+        "bamarni-bin": {
+            "bin-links": true,
+            "forward-command": true
+        }
+    },
+    "require": {
+        "php": "~8.1||~8.2",
+        "composer/composer": "^2.5",
+        "phpoption/phpoption": "^1.9",
+        "symfony/console": "^6.3",
+        "symfony/filesystem": "^6.3",
+        "symfony/process": "^6.3"
+    },
+    "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.8",
+        "roave/security-advisories": "dev-latest",
+        "symfony/var-dumper": "^6.3"
+    },
+    "scripts": {
+        "phpunit": "tools/phpunit.phar",
+        "php-cs-fixer": "tools/php-cs-fixer.phar",
+        "phpstan": "vendor/bin/phpstan",
+        "format": "@php-cs-fixer fix --config=.php-cs-fixer.dist.php",
+        "test": "@phpunit -c phpunit.xml.dist",
+        "analyze": "@phpstan analyze --config=phpstan.neon.dist",
+        "analyze:baseline": "@analyze --generate-baseline"
+    }
+}
