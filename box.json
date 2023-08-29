@@ -2,10 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/box-project/box/main/res/schema.json",
   "main": "bb2gh",
   "stub": true,
+  "alias": "bb2gh",
   "chmod": "0755",
   "compression": "GZ",
   "output": "./bin/bb2gh.phar",
-  "directories": ["src"],
+  "directories": [
+    "src",
+    "vendor/symfony/console/Resources"
+  ],
   "files": [
     "composer.json",
     "LICENSE.md"
@@ -14,8 +18,8 @@
     {
       "name": "{\\.[php]}",
       "exclude": [
-        "tests",
-        "test"
+        "test",
+        "tests"
       ],
       "in": "vendor"
     }
