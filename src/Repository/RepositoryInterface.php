@@ -8,5 +8,7 @@ interface RepositoryInterface
 {
     public function getName(): string;
 
+    public function getVendor(): ?string;
+
     public function getDescription(): ?string;
 }
