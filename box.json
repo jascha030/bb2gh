@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/box-project/box/main/res/schema.json",
+  "main": "bb2gh",
+  "stub": true,
+  "chmod": "0755",
+  "compression": "GZ",
+  "output": "./bin/bb2gh.phar",
+  "directories": ["src"],
+  "files": [
+    "composer.json",
+    "LICENSE.md"
+  ],
+  "finder": [
+    {
+      "name": "{\\.[php]}",
+      "exclude": [
+        "tests",
+        "test"
+      ],
+      "in": "vendor"
+    }
+  ],
+  "git-commit-short": "git_version",
+  "intercept": true,
+  "compactors": [
+    "KevinGH\\Box\\Compactor\\Php",
+    "KevinGH\\Box\\Compactor\\Json",
+    "KevinGH\\Box\\Compactor\\PhpScoper"
+  ],
+  "php-scoper": "scoper.php",
+  "exclude-composer-files": false,
+  "exclude-dev-files": true
+}
