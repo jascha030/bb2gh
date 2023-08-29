@@ -9,13 +9,12 @@ use InvalidArgumentException;
 use RuntimeException;
 
 use function explode;
-use function is_array;
 
 class ComposerRepository implements RepositoryInterface
 {
     private JsonFile $jsonFile;
 
-    private string $packageName;
+    private string $fullPackageName;
 
     private ?string $description;
 
@@ -24,24 +23,15 @@ class ComposerRepository implements RepositoryInterface
      */
     public function __construct(private readonly string $path)
     {
-        if (! $this->getJsonFile()->exists()) {
-            throw new InvalidArgumentException('Composer.json does not exist in ' . $this->path);
-        }
-
         $contents = $this->getJsonFile()->read();
-
-        if (! is_array($contents)) {
-            throw new InvalidArgumentException('Could not parse composer.json in path: ' . $this->path);
-        }
-
-        $name = $contents['name'] ?? null;
+        $name     = $contents['name'] ?? null;
 
         if (empty($name)) {
             throw new InvalidArgumentException('Could not get package name from composer.json in path: ' . $this->path);
         }
 
-        $this->packageName = $name;
-        $this->description = $contents['description'] ?? null;
+        $this->fullPackageName = $name;
+        $this->description     = $contents['description'] ?? null;
     }
 
     private function getJsonFile(): JsonFile
@@ -53,9 +43,14 @@ class ComposerRepository implements RepositoryInterface
         return $this->jsonFile;
     }
 
+    public function getVendor(): string
+    {
+        return explode('/', $this->fullPackageName)[0] ?? throw new RuntimeException('Could not get package name from composer.json');
+    }
+
     public function getName(): string
     {
-        return explode('/', $this->packageName)[1] ?? throw new RuntimeException('Could not get package name from composer.json');
+        return explode('/', $this->fullPackageName)[1] ?? throw new RuntimeException('Could not get package name from composer.json');
     }
 
     public function getDescription(): ?string
