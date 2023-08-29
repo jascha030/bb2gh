@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Jascha030\Bitbucket2Github\Executable;
 
 use PHPUnit\Framework\TestCase;
+
 use function is_executable;
 
 /**

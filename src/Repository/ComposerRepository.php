@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Jascha030\Bitbucket2Github\Repository;
 
-use Composer\Config;
-use Composer\Factory;
 use Composer\Json\JsonFile;
-use Composer\Package\RootPackageInterface;
 use InvalidArgumentException;
 use RuntimeException;
+
 use function explode;
 use function is_array;
 
@@ -27,13 +25,13 @@ class ComposerRepository implements RepositoryInterface
     public function __construct(private readonly string $path)
     {
         if (! $this->getJsonFile()->exists()) {
-            throw new \InvalidArgumentException('Composer.json does not exist in ' . $this->path);
+            throw new InvalidArgumentException('Composer.json does not exist in ' . $this->path);
         }
 
         $contents = $this->getJsonFile()->read();
 
         if (! is_array($contents)) {
-            throw new \InvalidArgumentException('Could not parse composer.json in path: ' . $this->path);
+            throw new InvalidArgumentException('Could not parse composer.json in path: ' . $this->path);
         }
 
         $name = $contents['name'] ?? null;
