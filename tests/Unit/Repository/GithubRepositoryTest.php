@@ -66,6 +66,6 @@ final class GithubRepositoryTest extends TestCase
 
     private function getRepository(): GithubRepository
     {
-        return new GithubRepository('bb2gh', 'Jascha030', 'CLI tool to help me quickly migrate a project from bitbucket to github.');
+        return new GithubRepository('bb2gh', 'CLI tool to help me quickly migrate a project from bitbucket to github.', 'Jascha030');
     }
 }

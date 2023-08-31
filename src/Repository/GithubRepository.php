@@ -8,8 +8,8 @@ class GithubRepository implements RepositoryInterface
 {
     public function __construct(
         readonly private string $name,
-        private ?string $vendor = null,
-        private ?string $description = null
+        private ?string $description = null,
+        private ?string $vendor = null
     ) {
     }
 
