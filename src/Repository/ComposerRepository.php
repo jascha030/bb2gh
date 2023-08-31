@@ -34,15 +34,6 @@ class ComposerRepository implements RepositoryInterface
         $this->description     = $contents['description'] ?? null;
     }
 
-    private function getJsonFile(): JsonFile
-    {
-        if (! isset($this->jsonFile)) {
-            $this->jsonFile = new JsonFile($this->path . '/composer.json');
-        }
-
-        return $this->jsonFile;
-    }
-
     public function getVendor(): string
     {
         return explode('/', $this->fullPackageName)[0] ?? throw new RuntimeException('Could not get package name from composer.json');
@@ -56,5 +47,14 @@ class ComposerRepository implements RepositoryInterface
     public function getDescription(): ?string
     {
         return $this->description;
+    }
+
+    private function getJsonFile(): JsonFile
+    {
+        if (! isset($this->jsonFile)) {
+            $this->jsonFile = new JsonFile($this->path . '/composer.json');
+        }
+
+        return $this->jsonFile;
     }
 }
