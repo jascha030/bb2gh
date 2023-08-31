@@ -53,14 +53,19 @@
         "symfony/var-dumper": "^6.3"
     },
     "scripts": {
+        "box": "tools/box.phar",
         "php-cs-fixer": "tools/php-cs-fixer.phar",
         "phpstan": "vendor/bin/phpstan",
         "phpunit": "tools/phpunit.phar",
-        "prefix": "@php-scoper add-prefix --config-file=scoper.php",
-        "php-scoper": "tools/php-scoper.phar",
+        "analyze": "@phpstan analyze --config=phpstan.neon.dist",
+        "analyze:baseline": "@analyze --generate-baseline",
         "format": "@php-cs-fixer fix --config=.php-cs-fixer.dist.php",
         "test": "@phpunit -c phpunit.xml.dist",
-        "analyze": "@phpstan analyze --config=phpstan.neon.dist",
-        "analyze:baseline": "@analyze --generate-baseline"
+        "compile": "@box compile -c box.json",
+        "build": [
+            "phive install",
+            "@composer install --no-dev -o",
+            "@compile"
+        ]
     }
 }
