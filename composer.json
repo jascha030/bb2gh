@@ -1,6 +1,6 @@
 {
     "name": "jascha030/bb2gh",
-    "description": "CLI tool to help me quickly migrate a project from bitbucket to github.",
+    "description": "CLI tool to help me quickly migrate projects from bitbucket to github.",
     "type": "library",
     "authors": [
         {
@@ -8,7 +8,15 @@
             "email": "contact@jaschavanaalst.nl"
         }
     ],
-    "keywords": [],
+    "keywords": [
+        "git",
+        "github",
+        "gh",
+        "bitbucket",
+        "migration",
+        "php",
+        "cli"
+    ],
     "homepage": "https://github.com/jascha030",
     "autoload": {
         "psr-4": {
@@ -21,7 +29,7 @@
         }
     },
     "bin": [
-        "bb2gh"
+        "bb2gh.phar"
     ],
     "config": {
         "platform": {
