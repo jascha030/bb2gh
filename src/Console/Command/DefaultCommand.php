@@ -54,9 +54,9 @@ EOF;
      */
     public function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->validateOrigin();
-
         $this->input = $input;
+
+        $this->validateOrigin();
 
         $this->targetRepository = new GithubRepository(
             $this->getLocalRepository()->getName(),
