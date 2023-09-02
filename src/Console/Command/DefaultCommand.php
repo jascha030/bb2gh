@@ -164,7 +164,7 @@ EOF;
                 '%s repo create %s %s',
                 $this->getGithubCLI(),
                 $this->getTargetName(),
-                implode(' ', [...($this->getCreateFlags())()])
+                implode(' ', [...$this->getCreateFlags()])
             )
         );
     }
@@ -174,17 +174,16 @@ EOF;
      */
     private function getCreateFlags(): Generator
     {
-        $args = array_filter([
-            '--private'     => true,
-            '--push'        => true,
-            '--remote'      => 'origin',
-            '--source'      => $this->getTargetDir(),
-            '--description' => $this->getLocalRepository()->getDescription(),
-        ]);
-
-        foreach ($args as $option => $value) {
-            yield true === $value ? $option : "{$option}=\"{$value}\"";
-        }
+        yield from array_map(
+            static fn (mixed $v, string $k): string => true === $v ? $k : "{$k}=\"{$v}\"",
+            array_filter([
+                '--private'     => true,
+                '--push'        => true,
+                '--remote'      => 'origin',
+                '--source'      => $this->getTargetDir(),
+                '--description' => $this->getLocalRepository()->getDescription(),
+            ])
+        );
     }
 
     private function validateOrigin(): void
