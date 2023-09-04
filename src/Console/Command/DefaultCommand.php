@@ -30,7 +30,6 @@ use function sprintf;
 use function str_contains;
 use function str_starts_with;
 
-use function var_dump;
 use const PHP_EOL;
 
 final class DefaultCommand extends Command
