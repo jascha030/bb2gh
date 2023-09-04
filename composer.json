@@ -29,7 +29,8 @@
         }
     },
     "bin": [
-        "bb2gh"
+        "bb2gh",
+        "bin/bb2gh.phar"
     ],
     "config": {
         "platform": {
