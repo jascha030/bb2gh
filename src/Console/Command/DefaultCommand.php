@@ -30,6 +30,7 @@ use function sprintf;
 use function str_contains;
 use function str_starts_with;
 
+use function var_dump;
 use const PHP_EOL;
 
 final class DefaultCommand extends Command
@@ -73,7 +74,7 @@ EOF;
             throw new RuntimeException('Could not create repository');
         }
 
-        if (! empty($this->input->getOption('owner'))) {
+        if (! empty($this->input->getOption('code-owner'))) {
             $this->createGithubFiles();
         }
 
@@ -101,7 +102,8 @@ EOF;
                 '--code-owner',
                 '-c',
                 InputOption::VALUE_REQUIRED,
-                'The owner of the repository.'
+                'The owner of the repository.',
+                null
             );
     }
 
@@ -175,15 +177,18 @@ EOF;
      */
     private function getCreateFlags(): Generator
     {
+        $args = array_filter([
+            '--private'     => true,
+            '--push'        => true,
+            '--remote'      => 'origin',
+            '--source'      => $this->getTargetDir(),
+            '--description' => $this->getLocalRepository()->getDescription(),
+        ]);
+
         yield from array_map(
-            static fn (mixed $v, string $k): string => true === $v ? $k : "{$k}=\"{$v}\"",
-            array_filter([
-                '--private'     => true,
-                '--push'        => true,
-                '--remote'      => 'origin',
-                '--source'      => $this->getTargetDir(),
-                '--description' => $this->getLocalRepository()->getDescription(),
-            ])
+            static fn (string $k, mixed $v): string => true === $v ? $k : "{$k}=\"{$v}\"",
+            array_keys($args),
+            array_values($args)
         );
     }
 
@@ -208,7 +213,7 @@ EOF;
 
     private function createGithubFiles(): void
     {
-        $owner = $this->input->getOption('owner');
+        $owner = $this->input->getOption('code-owner');
 
         if (! str_starts_with($owner, '@')) {
             $owner = '@' . $owner;
