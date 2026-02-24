@@ -36,10 +36,15 @@
         "platform-check": false,
         "sort-packages": true,
         "allow-plugins": {
-            "bamarni/composer-bin-plugin": true
+            "bamarni/composer-bin-plugin": true,
+            "ergebnis/composer-normalize": true
         }
     },
     "extra": {
+        "composer-normalize": {
+            "indent-size": 4,
+            "indent-style": "space"
+        },
         "bamarni-bin": {
             "bin-links": true,
             "forward-command": true
@@ -55,6 +60,7 @@
     },
     "require-dev": {
         "bamarni/composer-bin-plugin": "^1.9",
+        "ergebnis/composer-normalize": "^2.50",
         "roave/security-advisories": "dev-latest",
         "symfony/var-dumper": "^7||^8"
     },
