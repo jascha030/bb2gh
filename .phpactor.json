@@ -1,0 +1,6 @@
+{
+  "$schema": "tools/.phpactor.schema.json",
+  "language_server_php_cs_fixer.enabled": true,
+  "language_server_worse_reflection.diagnostics.enable": false
+}
+
