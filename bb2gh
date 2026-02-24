@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
         : __DIR__ . '/../../autoload.php';
 
     $app = new Application('bb2gh', '0.1.0');
-    $app->add(new DefaultCommand());
+    $app->addCommand(new DefaultCommand());
     $output = new ConsoleOutput();
 
     try {
@@ -25,4 +25,3 @@ use Symfony\Component\Console\Output\ConsoleOutput;
         exit(1);
     }
 })();
-
