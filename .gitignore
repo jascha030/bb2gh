@@ -5,18 +5,7 @@
 /.vscode/
 
 ## Dynamic
-/.var/cache/phpunit/*
-!/.var/cache/phpunit/.gitkeep
-/.var/cache/php-cs-fixer/*
-!/.var/cache/php-cs-fixer/.gitkeep
-/.var/cache/phpstan/*
-!/.var/cache/phpstan/.gitkeep
-
-/temp/
-/tmp/
-/dist/
-/build/
-/**.cache
+/.var/
 
 ## Library
 vendor
@@ -29,8 +18,7 @@ vendor
 /.pm.toml
 
 ## Other
-/*.DS_Store
-/.DS_Store
-/*.sql
-/TODO.md
-
+*.DS_Store
+.DS_Store
+*.sql
+**.cache
