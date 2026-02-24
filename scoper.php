@@ -10,7 +10,7 @@ declare(strict_types=1);
 use Isolated\Symfony\Component\Finder\Finder;
 
 return (static function (): array {
-    $create = Finder::create(...);
+    $create = Finder::create(...); // @phpstan-ignore-line
 
     return [
         'prefix'  => 'Bitbucket2Github',
